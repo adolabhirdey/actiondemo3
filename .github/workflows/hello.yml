@@ -1,8 +1,7 @@
 name: hello workflow
 on:
   workflow_dispatch:
-  on:
-    push:
+  push:
       branches: [ main ]
 jobs:
   build:

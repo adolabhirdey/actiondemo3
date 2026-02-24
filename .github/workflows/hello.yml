@@ -1,6 +1,9 @@
 name: hello workflow
 on:
   workflow_dispatch:
+  on:
+    push:
+      branches: [ main ]
 jobs:
   build:
     runs-on: self-hosted
@@ -10,5 +13,7 @@ jobs:
         run: echo Hello, world!  
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "====Prinitng====builtin variables ===="
+          env
+          pwd
+          ls -lhtr

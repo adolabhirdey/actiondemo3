@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: checkout code
-      - name: docker login using secerts
+      - name: docker login using secrets
         run: |
           echo "====docker login using secrets===="
-          echo ${{ secrets.DOCKER_USERNAME }} | docker login -username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin

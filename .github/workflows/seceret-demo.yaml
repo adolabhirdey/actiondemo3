@@ -11,5 +11,5 @@ jobs:
         name: checkout code
       - name: docker login using secrets
         run: |
-          echo "====docker login using secrets===="
-          echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            echo "====docker login using secrets===="
+            echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin

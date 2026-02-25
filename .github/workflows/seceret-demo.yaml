@@ -1,8 +1,6 @@
 name: secerts workflow
 on:
   workflow_dispatch:
-  push:
-      branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,4 +10,4 @@ jobs:
       - name: docker login using secrets
         run: |
             echo "====docker login using secrets===="
-            echo "${{ secrets.DOCKER_SECRET}}" | docker login --username "${{ secrets.DOCKER_SECRET }}" --password-stdin
+            echo "${{ secrets.PAT_TOKEN }}" | docker login --username "${{ secrets.DOCKER_SECRET }}" --password-stdin

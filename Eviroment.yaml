@@ -1,0 +1,36 @@
+name: Build and Deploy 
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version to deploy'
+        required: true
+        type: string
+        default: 'v1.0.0'
+      environment:
+        description: 'Select environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - prod
+          - uat
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the application
+        run: echo "Building the application..."
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Print input parameters
+        run: |
+          echo "Hello, ${{ inputs.version }}! You have selected the ${{ inputs.environment }} environment."
+      - name: Deploy the application
+        run: echo "Deploying the application..."
+             echo "Deployment is on $AKS for environment ${{ inputs.environment }}."

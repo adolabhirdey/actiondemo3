@@ -17,16 +17,16 @@ on:
           - prod
           - uat
 jobs:
-   build:
-     runs-on: ubuntu-latest
-     steps:
-         - uses: actions/checkout@v4
-         - name: Build the application
-           run: echo "Building the application..."
-   deploy:
-     runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the application
+        run: echo "Building the application..."
+  deploy:
+    runs-on: ubuntu-latest
     dependsOn: build
-     steps:
-        - name: Print input parameters
-          run: |
-            echo "Hello, ${{ inputs.version }}! You have selected the ${{ inputs.environment }} environment."
+    steps:
+      - name: Print input parameters
+        run: |
+          echo "Hello, ${{ inputs.version }}! You have selected the ${{ inputs.environment }} environment."

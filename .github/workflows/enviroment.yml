@@ -33,4 +33,4 @@ jobs:
           echo "Hello, ${{ inputs.version }}! You have selected the ${{ inputs.environment }} environment."
       - name: Deploy the application
         run: echo "Deploying the application..."
-             echo "Deployment is on $AKS for environment ${{ inputs.environment }}."
+             echo "Deployment is on ${{ env.AKS }} for environment ${{ inputs.environment }}."

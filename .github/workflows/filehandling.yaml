@@ -9,7 +9,7 @@ jobs:
               run: |
                 echo "This is a sample file created by job1." > sample.txt
             - name: upload file as artifact
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: sample-file
                 path: sample.txt
@@ -18,7 +18,7 @@ jobs:
         needs: job1
         steps:
             - name: Download the artifact from job1
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: sample-file
             - name: Display the content of the downloaded file

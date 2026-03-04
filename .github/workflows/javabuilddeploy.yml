@@ -54,6 +54,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: List files in build context
+        run: ls -l ${{ github.workspace }}
       - name: Build and push Docker image
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/java-app_demo:${{ github.run_number }} ${{ github.workspace }}

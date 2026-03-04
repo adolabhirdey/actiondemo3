@@ -42,6 +42,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Download built artifact
         uses: actions/download-artifact@v4
         with:
@@ -54,9 +56,13 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: List files in build context
-        run: ls -l ${{ github.workspace }}
+      - name: Checking Dockerfile 
+        run: |
+           pwd
+           ls -lhtr
+           cat Dockerfile || true
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/java-app_demo:${{ github.run_number }} ${{ github.workspace }}
+          docker build -t ghcr.io/${{ github.repository_owner }}/java-app_demo:${{ github.run_number }} .
           docker push ghcr.io/${{ github.repository_owner }}/java-app_demo:${{ github.run_number }}
+        working-directory: ${{ github.workspace }}

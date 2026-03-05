@@ -1,7 +1,7 @@
 name: azure old auth workflow
 on:
   workflow_dispatch:
-  permissions:
+permissions:
     contents: read
     id-token: write
 jobs:
